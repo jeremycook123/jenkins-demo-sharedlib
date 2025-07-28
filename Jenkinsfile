@@ -4,7 +4,7 @@
 pipeline {
     agent {
         node {
-            label('java')
+            label 'java'
         }
     }
 
@@ -14,6 +14,10 @@ pipeline {
         REGISTRY      = 'docker.io/cloudacademydevops'
         DOCKER_IMAGE  = "${REGISTRY}/${APP_NAME}:${IMAGE_TAG}"
     }
+
+    tools {
+        dockerTool 'docker-latest'
+    }    
 
     stages {
         stage('Checkout Source') {
